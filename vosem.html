@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <script>
+        function add(a, b) {
+            return a + b;
+        }
+
+        function subtract(a, b) {
+            return a - b;
+        }
+
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        function divide(a, b) {
+            if (b === 0) {
+                return "Ошибка: на ноль делить нельзя";
+            }
+            else {
+                return a / b;
+            }
+        }
+
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+
+            let result;
+
+            switch (operator) {
+                case "+":
+                    result = add(num1, num2);
+                    break;
+                case "-":
+                    result = subtract(num1, num2);
+                    break;
+                case "*":
+                    result = multiply(num1, num2);
+                    break;
+                case "/":
+                    result = divide(num1, num2);
+                    break;
+                default:
+                    document.getElementById("output").textContent = "Ошибка: некорректный оператор";
+                    return;
+            }
+
+            document.getElementById("output").textContent = `Результат: ${result}`;
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <label for="num1">Число 1:</label>
+        <input type="number" id="num1">
+    </p>
+
+    <p>
+        <label for="operator">Оператор (+, -, *, /):</label>
+        <input type="text" id="operator">
+    </p>
+
+    <p>
+        <label for="num2">Число 2:</label>
+        <input type="number" id="num2">
+    </p>
+    <button onclick="calculate()">Вычислить</button>
+    <p id="output"></p>
+</body>
+</html>
